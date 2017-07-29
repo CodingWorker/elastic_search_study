@@ -1,0 +1,130 @@
+# ======================== Elasticsearch Configuration =========================
+#
+# NOTE: Elasticsearch comes with reasonable defaults for most settings.
+#       Before you set out to tweak and tune the configuration, make sure you
+#       understand what are you trying to accomplish and the consequences.
+#
+# The primary way of configuring a node is via this file. This template lists
+# the most important settings you may want to configure for a production cluster.
+#
+# Please consult the documentation for further information on configuration options:
+# https://www.elastic.co/guide/en/elasticsearch/reference/index.html
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+#cluster.name: my-application
+cluster.name: my-elasticsearch-cluster
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+#node.name: node-1
+node.name: node-0
+#
+#指定本机为master
+node.master: true
+#
+#允许该节点存储数据
+node.data: true
+#
+#node.attr.rack: r1
+#
+# ----------------------------------- Index ------------------------------------
+#
+#设置索引的分片数
+#index.number_of_shards: 3
+#设置索引的副本数,可以通过api实时配置
+#index.number_of_replicas: 1
+# Add custom attributes to the node:
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+#path.data: /path/to/data
+#可以配置多个数据存储路径，之间用逗号隔开
+path.data: D:elasticsearch-5.2.2/elasticsearch-stuff/data/node-0
+#
+# Path to log files:
+#
+#可以配置多个日志路径，之间用逗号隔开
+#path.logs: /path/to/logs
+path.logs: D:elasticsearch-5.2.2/elasticsearch-stuff/logs/node-0
+#
+# Path of plugins
+#
+#path.plugins: /path/to/plugins
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+#bootstrap.memory_lock: true
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+#network.host: 192.168.0.1
+#设置绑定IP地址
+network.host: 192.168.64.212
+#
+# Set a custom port for HTTP:
+#
+#设置对外服务的http端口
+#http.port: 9200
+http.port: 19200
+#
+#设置节点间交互的tcp端口,默认为9300
+transport.tcp.port: 19000
+#
+#设置是否压缩tcp传输时的数据，默认是false
+transport.tcp.compress: true
+#
+#设置请求内容的最大容量，默认为100mb
+http.max_content_length: 110mb
+#
+#使用http对外提供服务，默认为true
+http.enabled: true
+#
+# For more information, consult the network module documentation.
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when new node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+#
+#discovery.zen.ping.unicast.hosts: ["host1", "host2"]
+#
+# Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
+#
+#discovery.zen.minimum_master_nodes: 3
+#
+# For more information, consult the zen discovery module documentation.
+#
+# ---------------------------------- Gateway -----------------------------------
+#
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+#gateway.recover_after_nodes: 3,集群重启时节点开启的个数才进行数据恢复
+gateway.recover_after_nodes: 1
+#
+#设置初始化过程的超时时间，分钟m;超时时间从满足上一条配置条件开始算起
+gateway.recover_after_time: 5m
+#
+# For more information, consult the gateway module documentation.
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Require explicit names when deleting indices:
+#
+#action.destructive_requires_name: true
