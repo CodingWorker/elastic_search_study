@@ -1,15 +1,12 @@
 package com.test.elasticsearch;
 
-import org.apache.logging.log4j.Logger;
 import org.elasticsearch.action.get.GetRequest;
-import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
-import java.net.Inet4Address;
 import java.net.InetAddress;
 
 /**
